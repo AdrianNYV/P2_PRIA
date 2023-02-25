@@ -33,8 +33,7 @@ public class GameManager : MonoBehaviour {
                 case UnityWebRequest.Result.Success:
                     Debug.Log(pages[page] + ":\nReceived: " + webRequest.downloadHandler.text);
                     ClaseMeteoResp claseMeteoResp = JsonUtility.FromJson<ClaseMeteoResp>(webRequest.downloadHandler.text);
-                    print(claseMeteoResp.listaCamaras[0].imaxeCamara);
-                    StartCoroutine(DescargaImagen(claseMeteoResp.listaCamaras[0].imaxeCamara));
+                    StartCoroutine(DescargaImagen(claseMeteoResp.listaCamaras[Random.Range(0, claseMeteoResp.listaCamaras.Count)].imaxeCamara));
                     break;
             }
         }
